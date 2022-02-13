@@ -1,0 +1,14 @@
+{
+    "name": "Wordle Cheat",
+    "description": "Win in Wordle with a press of a button",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "css": ["style.css"],
+            "js": ["cheat-button.js"],
+            "matches": ["https://www.nytimes.com/games/wordle/*"]
+        }
+    ]
+}

@@ -1,18 +1,18 @@
+const game = document.getElementsByTagName("game-app")[0],
+      keyboard = game.$keyboard;
 
 const cheat = document.createElement("button");
 cheat.id = "cheat";
 
+const reset = document.createElement("button");
+reset.id = "reset";
+
 const { solution } = JSON.parse(localStorage.getItem("nyt-wordle-state"));
 
 cheat.onclick = () => {
-    for(const char of solution.split(""))
-        window.dispatchEvent(new KeyboardEvent("keydown", { key: char }));
-    
-    window.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+    solution.split("").forEach((letter) => keyboard.dispatchKeyPressEvent(letter));
+    keyboard.dispatchKeyPressEvent("Enter");
 };
-
-const reset = document.createElement("button");
-reset.id = "reset";
 
 reset.onclick = () => {
     localStorage.clear();
